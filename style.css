@@ -222,8 +222,6 @@ nav {
 }
 
 
-
-
 /* Media Queries */
 
 @media all and (max-width: 950px) {
@@ -232,13 +230,14 @@ nav {
     background-position: right;
     background-size: 300%;
     }
-    
     .exchange {
         width: 100%;
     }
-
     .country {
         width: 100%;
+    }
+    .how-to__content {
+        width: 60%;
     }
 }
 
@@ -284,6 +283,14 @@ nav {
     }
     .wrapper {
         padding-top: 20;
+    }
+    .how-to {
+        justify-content: center;
+    }
+    .how-to__content {
+        width: 90%;
+        background: rgba(255, 255, 255, 0.842);
+        border-radius: 10px;
     }
 }
 
