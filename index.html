@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <nav>
+        <div class="logo">$=€</div>
+        <div class="nav__space"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="how-to-use.html">How to Use</a></li>
+            <li><a href="how-its-made.html">How it's made</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    
+
+
+
+    <div class="space"></div>
+
+    <div class="wrapper">
+        <div class="exchange">
+            <div class="exchange__app">
+                <div class="exchange__app__title">
+                    <h1>Currency Exchange Tool</h1>
+                </div>
+                <div class="exchange__app__convert-from">
+                    <h1>Convert From</h1>
+                    <h2>Currency:</h2>
+                    <select name="convertFrom" id="convertFromInput">
+                        <option value="USD">USD United States Dollar</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                    <h2>Amount:</h2>
+                    <input id="convertFromAmountInput" type="text" value="0">
+                </div>
+                <div class="exchange__app__convert-to">
+                    <h1>Convert To</h1>
+                    <h2>Currency:</h2>
+                    <select name="convertTo" id="convertToInput">
+                        <option value="EUR">EUR Euro</option>
+                        <option value="USD">USD</option>
+                    </select>
+                    <h2>Amount:</h2>
+                    <input id="convertToAmountInput" type="text" value="0">
+                </div>
+            </div>
+        </div>
+        <div class="country">
+            <div class="country__app">
+                <div class="country__app__title">
+                    <h1>Know the Currency You Need?</h1>
+                </div>
+                <div class="country__app__content">
+                    <h2>Country:</h1>
+                    <select name="countrySelector" id="countrySelector">
+                        <option value="United States">United States</option>
+                    </select>
+                    <h2>Currency:</h1>
+                    <p id="currencyValue">USD</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="nav.js"></script>
+    <script src="requests.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
