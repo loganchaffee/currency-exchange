@@ -10,12 +10,12 @@ let targetCurrencyInput = document.getElementById('convertToInput')
 
 // Listens for changes in the currency selection
 startCurrencyInput.addEventListener('input', (e) => {
-    startCurrency = e.target.value
+    startCurrency = e.target.value.substring(0, 3)
     makeRequest2()
 })
 // Listens for changes in the currency selection
 targetCurrencyInput.addEventListener('input', (e) => {
-    targetCurrency = e.target.value
+    targetCurrency = e.target.value.substring(0, 3) 
     makeRequest()    
 })
 

@@ -4,9 +4,8 @@ function makeRequest() {
     request.addEventListener('readystatechange', (e) => {
         if (e.target.readyState === 4 && e.target.status === 200) {
             const data = JSON.parse(e.target.responseText)
-            convertToAmount = convertFromAmount * data.conversion_rate
+            convertToAmount = Math.round(100 * (convertFromAmount * data.conversion_rate)) / 100
             convertToAmountInput.value = convertToAmount
-            console.log(data);
         } else if (e.target.readyState === 4) {
             console.log('Error');
         }
@@ -20,7 +19,7 @@ function makeRequest2() {
     request.addEventListener('readystatechange', (e) => {
         if (e.target.readyState === 4 && e.target.status === 200) {
             const data = JSON.parse(e.target.responseText)
-            convertFromAmount = convertToAmount / data.conversion_rate
+            convertFromAmount = Math.round(100 * (convertToAmount / data.conversion_rate)) / 100
             convertFromAmountInput.value = convertFromAmount
         } else if (e.target.readyState === 4) {
             console.log('Error');
@@ -53,18 +52,31 @@ function requestCountries() {
     request.addEventListener('readystatechange', (e) => {
         if (e.target.readyState === 4 && e.target.status === 200) {
             const data = JSON.parse(e.target.responseText)
+            let currencyList = []
+
             data.forEach(country => {
+                if (!currencyList.includes(`${country.currencies[0].code} ${country.currencies[0].name}`)) {
+                    currencyList.push(`${country.currencies[0].code} ${country.currencies[0].name}`)
+                }
+            });
+
+            currencyList.splice(28, 1)
+
+            // Generates Start Currency Input List
+            currencyList.forEach(currency => {
                 let opt = document.createElement('option');
-                opt.appendChild(document.createTextNode(`${country.currencies[0].code} ${country.currencies[0].name}`));
-                opt.value = country.currencies[0].code;
+                opt.appendChild(document.createTextNode(currency));
+                opt.value = currency;
                 startCurrencyInput.appendChild(opt);
             });
-            data.forEach(country => {
+            // Generates Target Currency Input List
+            currencyList.forEach(currency => {
                 let opt = document.createElement('option');
-                opt.appendChild(document.createTextNode(`${country.currencies[0].code} ${country.currencies[0].name}`));
-                opt.value = country.currencies[0].code;
+                opt.appendChild(document.createTextNode(currency));
+                opt.value = currency;
                 targetCurrencyInput.appendChild(opt)
             });
+            // Generates Country List
             data.forEach(country => {
                 let opt = document.createElement('option');
                 opt.appendChild(document.createTextNode(country.name));
@@ -78,4 +90,3 @@ function requestCountries() {
     request.open('GET', `https://restcountries.eu/rest/v2/all`)
     request.send()
 }
-
